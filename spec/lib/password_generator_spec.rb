@@ -45,4 +45,10 @@ describe PasswordGenerator do
       expect(@password_generator.generate(i)).to match(/\d/)
     end
   end
+
+  it "should not include similar characters" do
+    (8..32).each do |i|
+      expect(@password_generator.generate(i)).not_to match(/I|O|l|0|1/)
+    end
+  end
 end
