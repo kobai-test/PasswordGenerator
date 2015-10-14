@@ -19,3 +19,14 @@ class PasswordGenerator
     temp.split("").shuffle.join
   end
 end
+
+if $0 == __FILE__
+  # direct call
+  if ARGV[0] =~ /\A\d+\Z/
+    pg = PasswordGenerator.new
+    puts pg.generate ARGV[0].to_i
+  else
+    puts "Usage: #{__FILE__} number"
+    exit 1
+  end
+end
